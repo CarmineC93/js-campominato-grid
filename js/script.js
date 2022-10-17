@@ -1,56 +1,39 @@
-/*L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-Ogni cella ha un numero progressivo, da 1 a 100.
-Ci saranno quindi 10 caselle per ognuna delle 10 righe.
-Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro 
-ed emetto un messaggio in console con il numero della cella cliccata. */
-
-//3 per ogni click su btn Play verrà generata una nuova griglia che sostituisce la precedente
+//impostiamo in una variabile il numero di celle della griglia
+let squareNmbr = 100;
 
 //All'evento click sul btn Play verrà generata una griglia di gioco
     //creiamo una variabile per salvare l'elemento button Play al cui click si genererà la griglia
 const btnPlay = document.querySelector("button");
 
-    //impostiamo in una variabile il numero di celle della griglia
-const squareNmbr = 100;
-
-let gridDisplayer = false;
 
 btnPlay.addEventListener( "click", function(){
+    
+    //prelevo l'elemento in cui verrano create le celle e lo salvo in variabile
+    const grid = document.querySelector(".grid");
 
-    if(gridDisplayer===false){ 
-                //generiamo un array dal quale creeremo la griglia. Lo generiamo dalla funzione -generateOrderArray-
-        const progressiveNmbrs = generateOrderArray (squareNmbr);
-        //per ogni numero dell'array creiamo dinamicamente una cella -square- attraverso un ciclo che scorra l'array
+    //ad ogni click l'elemento -grid- viene svuotato
+    grid.innerHTML = "";
 
-        for (let i = 0; i< progressiveNmbrs.length; i++){
-            //prelevo l'elemento in cui verrano create le celle e lo salvo in variabile
-            const grid = document.querySelector(".grid")
-            //creo una funzione -generateSquare- che generi un elemento all'interno del quale andrà un contenuto (numero preso dall'array)
-                //salvo il numero preso dall'array in una variabile -innerNmbrs-
-            const innerNmbrs = progressiveNmbrs[i];
-            const square = generateSquare (innerNmbrs);
-            //inserisco l'elemento creato nell'elemento genitore salvato nella variabile -grid-
-            grid.append(square);
+    //generiamo un array dal quale creeremo la griglia. Lo generiamo dalla funzione -generateOrderArray-
+    const progressiveNmbrs = generateOrderArray (squareNmbr);
+    //per ogni numero dell'array creiamo dinamicamente una cella -square- attraverso un ciclo che scorra l'array
 
-            //ad ogni elemento creato in questo ciclo, assegniamo un evento che lo attiva(al click cambia colore e logga messaggio)
-            square.addEventListener("click", function(){
-                square.classList.add("ms_click_on_square_bg");
-                console.log(innerNmbrs)
-            })
-        }
+    for (let i = 0; i< progressiveNmbrs.length; i++){
 
-        gridDisplayer = true;
+        //creo una funzione -generateSquare- che generi un elemento all'interno del quale andrà un contenuto (numero preso dall'array)
+            //salvo il numero preso dall'array in una variabile -innerNmbrs-
+        const innerNmbrs = progressiveNmbrs[i];
+        const square = generateSquare (innerNmbrs);
+        //inserisco l'elemento creato nell'elemento genitore salvato nella variabile -grid-
+        grid.append(square);
 
-    } else { 
-        
-        gridDisplayer = false
+        //ad ogni elemento creato in questo ciclo, assegniamo un evento che lo attiva(al click cambia colore e logga messaggio)
+        square.addEventListener("click", function(){
+            square.classList.add("ms_click_on_square_bg");
+            console.log(innerNmbrs)
+        })
     }
-
  })
-
-
-
-
 
 
 /**

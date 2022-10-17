@@ -41,11 +41,11 @@
 .btn{
     padding: 0.2rem 1.7rem;
     border-radius: 5px;
-    border-color: grey;
-    border-style: solid;
+    border:1px solid gray;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
+    background-color: gainsboro;
 }
 
 /* COMMON */
@@ -102,6 +102,19 @@ main{
     height: calc(100% / 10);
     border: 1px solid black;
 }
+
+.square-hard{
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+    border: 1px solid black;
+}
+
+.square-normal{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+    border: 1px solid black;
+}
+
 
 @media screen and (max-width: 600px) {
     /* HEADER */
