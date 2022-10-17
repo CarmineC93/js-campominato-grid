@@ -11,9 +11,19 @@
 }
 
 /* UTILITIES */
-.center-flex{
+.flex{  
     display: flex;
+}
+
+.justify-beetween{
     justify-content: space-between;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.align-center{
     align-items: center;
 }
 
@@ -68,6 +78,14 @@ main{
     height: calc(100vh - (var(--header-height) + var(--footer-height)));
     /* DEBUG */
     background-color: cadetblue;
+}
+
+.grid{
+
+    /* DEBUG */
+    background-color: chocolate;
+    width: 70vw;
+    height: 70vh;
 }
 
 /* FOOTER */
