@@ -8,9 +8,16 @@
 :root{
     --header-height: 90px;
     --footer-height: 50px;
+
+    --ms_click_square_bg: lightskyblue
 }
 
 /* UTILITIES */
+
+.ms_click_on_square_bg{
+    background-color:var(--ms_click_square_bg);
+}
+
 .flex{  
     display: flex;
 }
@@ -23,7 +30,7 @@
     justify-content: center;
 }
 
-.align-center{
+.align-center{ 
     align-items: center;
 }
 
@@ -72,20 +79,44 @@ h1{
         height: 27px;
     }
  }
+ 
 
 /* MAIN */
 main{
+    width: 100%;
     height: calc(100vh - (var(--header-height) + var(--footer-height)));
     /* DEBUG */
     background-color: cadetblue;
 }
 
 .grid{
+    display: flex;
+    flex-wrap: wrap;
+    height: 600px;
+    width: 600px;
+    margin: 1rem 0;
+}
 
-    /* DEBUG */
-    background-color: chocolate;
-    width: 70vw;
-    height: 70vh;
+.square{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 1px solid black;
+}
+
+@media screen and (max-width: 600px) {
+    /* HEADER */
+    .grid{
+        height: 500px;
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    /* HEADER */
+    .grid{
+        height: 300px;
+        width: 300px;
+    }
 }
 
 /* FOOTER */
