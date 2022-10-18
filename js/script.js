@@ -2,11 +2,6 @@
 let squareNmbr = "";
 let howManyRow = "";
 
-//prelevare scelta del livello, cioè il livello selezionato al momento del click
-const hardDifficulty = document.querySelector(".hard");
-
-
-
 
 //All'evento click sul btn Play verrà generata una griglia di gioco
     //creiamo una variabile per salvare l'elemento button Play al cui click si genererà la griglia
@@ -49,7 +44,7 @@ btnPlay.addEventListener( "click", function(){
         //creo una funzio                                                  ne -generateSquare- che generi un elemento all'interno del quale andrà un contenuto (numero preso dall'array)
             //salvo il numero preso dall'array in una variabile -innerNmbrs-
         const innerNmbrs = progressiveNmbrs[i];
-        const square = generateSquare (innerNmbrs);
+        const square = generateSquare (innerNmbrs, howManyRow);
         //inserisco l'elemento creato nell'elemento genitore salvato nella variabile -grid-
         grid.append(square);
 
@@ -87,5 +82,7 @@ function generateSquare (insideNmbr, rowNmbr){
     newElement.style.width = `calc(100% / ${rowNmbr})`;
     newElement.style.height = `calc(100% / ${rowNmbr})`;
     newElement.innerHTML = insideNmbr;
+    console.log(rowNmbr);
     return newElement;
+    
 }
