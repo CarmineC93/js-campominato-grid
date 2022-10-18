@@ -1,5 +1,12 @@
 //impostiamo in una variabile il numero di celle della griglia
-let squareNmbr = 100;
+let squareNmbr = "";
+let howManyRow = "";
+
+//prelevare scelta del livello, cioè il livello selezionato al momento del click
+const hardDifficulty = document.querySelector(".hard");
+
+
+
 
 //All'evento click sul btn Play verrà generata una griglia di gioco
     //creiamo una variabile per salvare l'elemento button Play al cui click si genererà la griglia
@@ -7,7 +14,26 @@ const btnPlay = document.querySelector("button");
 
 
 btnPlay.addEventListener( "click", function(){
-    
+
+    //prelevo scelta del livello, cioè il livello selezionato al momento del click
+    const difficulty = document.getElementById("difficulty");
+    const level = difficulty.value; 
+
+    switch (level) {
+        case "normal":
+            squareNmbr = 49;
+            howManyRow = 7;
+        break;
+        case "hard": 
+            squareNmbr = 81;
+            howManyRow = 9;
+        break;
+        case "legend": 
+            squareNmbr = 100;
+            howManyRow = 10;
+        break;
+    }
+
     //prelevo l'elemento in cui verrano create le celle e lo salvo in variabile
     const grid = document.querySelector(".grid");
 
@@ -20,7 +46,7 @@ btnPlay.addEventListener( "click", function(){
 
     for (let i = 0; i< progressiveNmbrs.length; i++){
 
-        //creo una funzione -generateSquare- che generi un elemento all'interno del quale andrà un contenuto (numero preso dall'array)
+        //creo una funzio                                                  ne -generateSquare- che generi un elemento all'interno del quale andrà un contenuto (numero preso dall'array)
             //salvo il numero preso dall'array in una variabile -innerNmbrs-
         const innerNmbrs = progressiveNmbrs[i];
         const square = generateSquare (innerNmbrs);
@@ -52,11 +78,14 @@ function generateOrderArray (arrayLength) {
 /**
  * Description Funzione che crea un elemento con un contenuto testuale interno(insideNmbr)
  * @param {number} --> il contenuto dell'elemento sarà un numero da 1 a 100
+ * @param {number} --> il numero delle righe della griglia, che determina altezza e larghezza della cella
  * @returns {object} --> la funzione genererà un elemento nel DOM
  */
-function generateSquare (insideNmbr){
+function generateSquare (insideNmbr, rowNmbr){
     const newElement = document.createElement("div");
     newElement.classList.add("square", "flex", "align-center", "justify-center");
+    newElement.style.width = `calc(100% / ${rowNmbr})`;
+    newElement.style.height = `calc(100% / ${rowNmbr})`;
     newElement.innerHTML = insideNmbr;
     return newElement;
 }

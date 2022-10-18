@@ -98,20 +98,8 @@ main{
 }
 
 .square{
-    width: calc(100% / 10);
-    height: calc(100% / 10);
-    border: 1px solid black;
-}
-
-.square-hard{
-    width: calc(100% / 9);
-    height: calc(100% / 9);
-    border: 1px solid black;
-}
-
-.square-normal{
-    width: calc(100% / 7);
-    height: calc(100% / 7);
+    /* width: calc(100% / 10);
+    height: calc(100% / 10); */
     border: 1px solid black;
 }
 
